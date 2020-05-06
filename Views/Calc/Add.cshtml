@@ -1,0 +1,69 @@
+@{
+    ViewData["Title"] = "Addition Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">The Web Calculator</h1>
+    <p>The Two input spaces can accept two numbers and display which has a higher Square root</p>
+</div>
+
+@{
+    if ( ViewBag.NumberOne > ViewBag.NumberTwo &&  ViewBag.NumberOne != null && ViewBag.NumberTwo != null )
+    {
+        <div class="text-center">
+            <p>The Number @ViewBag.NumberFirst with Square root @ViewBag.NumberOne has a higher square root than the number @ViewBag.NumberSecond with square root @ViewBag.NumberTwo </p>
+        </div>
+    }    
+}
+
+@{
+    if ( ViewBag.NumberOne < ViewBag.NumberTwo &&  ViewBag.NumberOne != null && ViewBag.NumberTwo != null )
+    {
+        <div class="text-center">
+            <p>The Number @ViewBag.NumberSecond with Square root @ViewBag.NumberTwo has a higher square root than the number @ViewBag.NumberFirst with square root @ViewBag.NumberOne </p>
+        </div>
+    } 
+}
+@{
+    if ( ViewBag.NumberOne == ViewBag.NumberTwo &&  ViewBag.NumberOne != null && ViewBag.NumberTwo != null )
+    {
+        <div class="text-center">
+            <p>The inputted Numbers have equal Square Roots, Please enter Two different Numbers </p>
+        </div>
+    } 
+}
+@{
+    if ( ViewBag.NegFirst < 0 || ViewBag.NegSecond < 0)
+    {
+        <div class="text-center">
+            <p> No Result for Negative Integer. Please enter Positive Interger</p>
+        </div>
+    } 
+}
+
+<div class="container text-center">
+
+    <form asp-controller="Calc" asp-action="Add" method="POST">
+
+        <div>
+            <p>
+                <input type="number" placeholder="first number" name="firstNumber">
+            </p>
+        </div>
+        <div>
+            <p>
+                <input type="number" placeholder="second number" name="secondNumber">
+            </p>
+        </div>
+        <div>
+            <p>
+                <button type="submit">submit</button>
+            </p>
+        </div>
+        
+    </form>
+
+</div>
+
+@*             Console.WriteLine($"The highest grade is {highGrade:N1}");
+ *@
